@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-# 
-# class InterfaceStateEnum():
+
+class InterfaceStateEnum():
     @property
     def NONE(self): return -1
     @property

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from serverinterface import ServerInterface
+from interface.serverinterface import ServerInterface
 import logging
 
 class Server:

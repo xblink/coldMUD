@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
-from serverinterface import ServerInterface
-from interfacestates import State
+from interface.serverinterface import ServerInterface
+from interface.interfacestates import State
 
 from getpass import getpass
 import logging
@@ -71,7 +71,7 @@ class IRCInterface(ServerInterface):
             if msg.find("NOTICE * :*** Found your hostname") != -1:
                 self.connected = State.ACTIVE
                 self.logger.info(f"Connected to {self.server}:" + 
-                                  "{self.port} as {self.nick}")
+                                  f"{self.port} as {self.nick}")
 
             if msg.find(f":{self.nick} MODE {self.nick} :+iwx") != -1:
                 self.registered = State.ACTIVE

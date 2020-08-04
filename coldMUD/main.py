@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from ircinterface import IRCInterface
+from interface.ircinterface import IRCInterface
 from server import Server
 import logging
 
