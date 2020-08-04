@@ -145,7 +145,7 @@ class IRCInterface(ServerInterface):
         self.logger.info("Terminating service.")
         self.connected = False
         self.listenerthread.join()
-        self.sock.shutdown(1)
+        self.sock.shutdown(message)
         self.sock.close()
         self.logger.info("Socket closed.")
 
