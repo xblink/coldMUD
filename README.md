@@ -2,7 +2,7 @@
 ### A Random rogue-like MUD thingamajig.
 
 Not much to it at the moment. 
-But you can be meant to it at least.
+But you can be mean to it at least.
 
 
 ## To Run
