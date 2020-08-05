@@ -1,7 +1,7 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
-from interface.serverinterface import ServerInterface
-from interface.interfacestates import State
+from .serverinterface import ServerInterface
+from .interfacestates import State
 
 from getpass import getpass
 import logging
@@ -31,6 +31,10 @@ class IRCInterface(ServerInterface):
         self._ibufferlock = threading.Lock()
         self.inputbuffer = []
 
+    @property
+    def is_connected(self): 
+        return self.connected == State.ACTIVE
+        
     def start(self):
         self.connect()
         self.authenticate()
@@ -131,7 +135,7 @@ class IRCInterface(ServerInterface):
                 with self._ibufferlock:
                     self.inputbuffer.append(msg)
 
-        self.logger.info("Listener thread terminating.")
+        self.logger.info("Listener thread terminating...")
 
     def getmessage(self) -> str:
         msg = ""
@@ -142,9 +146,11 @@ class IRCInterface(ServerInterface):
         return msg
 
     def terminate(self, message):
-        self.logger.info("Terminating service.")
+        self.logger.info("Terminating interface connection...")
         self.connected = False
         self.listenerthread.join()
+        self.logger.info("Listener thread terminated.")
+        self.logger.info("Socket terminating...")
         self.sock.shutdown(message)
         self.sock.close()
         self.logger.info("Socket closed.")

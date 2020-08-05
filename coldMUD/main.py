@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 from interface.ircinterface import IRCInterface
 from server import Server
@@ -10,6 +10,7 @@ if __name__ == '__main__':
                         datefmt="%H:%M:%S")
     logger = logging.getLogger("coldMUD logger")
     
-    interface = IRCInterface(logger=logger)
-    gameserver = Server(interface, logger=logger)
+    iface = IRCInterface(logger=logger)
+    iface.start()
+    gameserver = Server(iface, logger=logger)
     gameserver.start()
