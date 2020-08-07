@@ -13,4 +13,7 @@ if __name__ == '__main__':
     iface = IRCInterface(logger=logger)
     iface.start()
     gameserver = Server(iface, logger=logger)
+    for player in iface.admins:
+        gameserver.add_player(player)
     gameserver.start()
+    

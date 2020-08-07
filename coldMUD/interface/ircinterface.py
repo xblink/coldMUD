@@ -125,13 +125,15 @@ class IRCInterface(ServerInterface):
         while self.connected:
             msg = self._recv()
             if msg == "": continue
+            
+            msg = msg.rstrip("\r\n")
 
             if msg.find("PING") == 0:
                 self.logger.info(msg)
                 self._send("PONG :Anybody home?")
 
             if msg[1:].split(':',1)[0].find(" PRIVMSG ") != -1:
-                self.logger.debug(msg.rstrip("\r\n"))
+                self.logger.debug(msg)
                 with self._ibufferlock:
                     self.inputbuffer.append(msg)
 

@@ -1,0 +1,21 @@
+{
+    "commands": {
+        "help": {
+            "help": 1,
+            "-h": 1
+        },
+        "move": {
+            "move": 0,
+            "sneak": 1,
+            "walk": 2,
+            "run": 3,
+            "sprint": 4
+        }
+    },
+    "direction": {
+        "up": 1,
+        "dpwm": 3,
+        "right": 2,
+        "left": 4
+    }
+}
